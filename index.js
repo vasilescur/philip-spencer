@@ -1,5 +1,7 @@
 var http, director, cool, bot, router, server, port;
 
+console.log('Loading packages...')
+
 http        = require('http');
 director    = require('director');
 cool        = require('cool-ascii-faces');
@@ -26,6 +28,8 @@ server = http.createServer(function (req, res) {
 
 port = Number(process.env.PORT || 5000);
 server.listen(port);
+
+console.log('Listening on port ' + process.env.PORT)
 
 function ping() {
   this.res.writeHead(200);
