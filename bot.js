@@ -3,13 +3,16 @@ var cool = require('cool-ascii-faces');
 
 var botID = process.env.BOT_ID;
 
+const PLEDGES_TEXT = "pledges: @Andy Demma @baljeet charvu @Ben Fiszel @Brandon Weiss @David Ramirez @Feddy @Jason Huang @Mike Montelli @Mitchell Negus @Noah Citron @Raymond Lin @RJ Shah @Thuan Tran @Tyler Feldman";
+
+
 function respond() {
   var request = JSON.parse(this.req.chunks[0]),
       botRegex = /^\/cool guy$/;
 
   if(request.text && botRegex.test(request.text)) {
     this.res.writeHead(200);
-    postMessage();
+    respondTo(request.text);
     this.res.end();
   } else {
     console.log("don't care");
@@ -18,10 +21,19 @@ function respond() {
   }
 }
 
-function postMessage() {
+function respondTo(trigger) {
+  if (trigger === "@pledges") {
+    postMessage(PLEDGES_TEXT);
+  } else if (trigger === "test") {
+    postMessage("Test successful!");
+  }
+}
+
+
+function postMessage(msg) {
   var botResponse, options, body, botReq;
 
-  botResponse = cool();
+  botResponse = msg;    // cool();
 
   options = {
     hostname: 'api.groupme.com',
