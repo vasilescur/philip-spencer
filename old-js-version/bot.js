@@ -1,5 +1,4 @@
-var HTTPS = require("https");
-var request = require("request");
+var https = require("https");
 //var cool = require("cool-ascii-faces");
 
 var botID = process.env.BOT_ID;
@@ -45,34 +44,45 @@ function postMessage(msg) {
 
   botResponse = msg; // cool();
 
+  var postData = '{"text" : "' + botResponse + '", "bot_id" : "53e45d131d15b145aae90ff582"}';
+
+  var options = {
+    hostname: 'api.groupme.com',
+    path: '/v3/bots/post',
+    method: 'POST',
+    headers: {
+      'Content-Type': ''
+    }
+  }
+
   // options = {
   //   hostname: "api.groupme.com",
   //   path: "/v3/bots/post",
   //   method: "POST"
   // };
 
-  body = {
-    bot_id: botID,
-    text: botResponse
-  };
+  // body = {
+  //   bot_id: botID,
+  //   text: botResponse
+  // };
 
-  console.log("sending " + botResponse + " to " + botID);
+  // console.log("sending " + botResponse + " to " + botID);
 
-  var dataString = '{"text" : "' + botResponse + '", "bot_id" : "53e45d131d15b145aae90ff582"}';
+  // var dataString = '{"text" : "' + botResponse + '", "bot_id" : "53e45d131d15b145aae90ff582"}';
 
-  var options = {
-      url: 'https://api.groupme.com/v3/bots/post',
-      method: 'POST',
-      body: dataString
-  };
+  // var options = {
+  //     url: 'https://api.groupme.com/v3/bots/post',
+  //     method: 'POST',
+  //     body: dataString
+  // };
 
-  function callback(error, response, body) {
-      if (!error && response.statusCode == 200) {
-          console.log(body);
-      }
-  }
+  // function callback(error, response, body) {
+  //     if (!error && response.statusCode == 200) {
+  //         console.log(body);
+  //     }
+  // }
 
-  request(options, callback);  
+  // request(options, callback);  
 
   // botReq = HTTPS.request(options, function(res) {
   //   if (res.statusCode == 202) {
