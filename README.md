@@ -1,4 +1,4 @@
-# Sample GroupMe NodeJS Callback Bot
+# Philip Spencer Bot
 
 ## Introduction
 
